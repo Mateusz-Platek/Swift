@@ -1,0 +1,19 @@
+services:
+  java:
+    ports:
+      - "8080:8080"
+    build:
+      context: .
+      dockerfile: docker/java/Dockerfile
+
+  postgresql:
+    image: "postgres:17"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
